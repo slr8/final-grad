@@ -9,7 +9,7 @@ const AdminNavBar = () => {
     }
     return (
         <>
-            <nav className='sticky top-0 z-[999] w-screen'>
+            <nav className='sticky top-0 z-[999]'>
                 <div className="w-full mx-auto flex justify-between items-center bg-[#ffff] pb-3">
                     <div className="flex items-center  ml-[30px] ">
                         <img src="/Images/Navbar/Polygon 1.png" alt="Logo" className="mr-2 h-9 pt-2" />

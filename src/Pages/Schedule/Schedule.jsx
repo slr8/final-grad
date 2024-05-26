@@ -1,12 +1,10 @@
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import FifthColumnCell from '../../Components/UserCells/FifthColumnCell/FifthColumnCell'
-import FirstColumnCell from '../../Components/UserCells/FirstColumnCell/FirstColumnCell'
-import FourthColumnCell from '../../Components/UserCells/FourthColumnCell/FourthColumnCell'
-import SecondColumnCell from '../../Components/UserCells/SecondColumnCell/SecondColumnCell'
-import ThirdColumnCell from '../../Components/UserCells/ThirdColumnCell/ThirdColumnCell'
 import ScrollToTop from '../../UI/ScrollToTop'
+import Loader from '../../UI/Loader' // Import the Loader component
 import { generateRow1, generateRow2, generateRow3, generateRow4 } from '../../scripts'
 import './schedule.css'
+
 
 // const sunday8 = appointments.appointments.find(appointment => appointment.day.toLowerCase() === "sunday" && appointment.startTime === "8:00");
 // const sunday9 = appointments.appointments.find(appointment => appointment.day.toLowerCase() === "sunday" && appointment.startTime === "9:00");
@@ -30,7 +28,14 @@ import './schedule.css'
 const Schedule = () => {
     const username = useSelector((state) => state.auth.user.userName)
     const data = useSelector((state) => state.auth.user.schedule)
-    console.log(data);
+    const [loading, setLoading] = useState(true); // Add loading state
+
+    useEffect(() => {
+        if (data) {
+            setLoading(false); // Set loading to false when data is available
+        }
+    }, [data]);
+
     const generateAppointments = (day, start, end) => {
         const appointmentsObj = {};
         for (let i = start; i <= end; i++) {
@@ -41,6 +46,7 @@ const Schedule = () => {
         }
         return appointmentsObj;
     };
+
     const apps = {
         ...generateAppointments("Sunday", 8, 19),
         ...generateAppointments("Monday", 8, 19),
@@ -48,7 +54,11 @@ const Schedule = () => {
         ...generateAppointments("Wednesday", 8, 19),
         ...generateAppointments("Thursday", 8, 19),
     };
-    console.log(apps);
+
+    if (loading) {
+        return <Loader />; // Display Loader while loading
+    }
+
     return (
         <div className='bg-[#0060E42B]'>
             <ScrollToTop />
@@ -61,7 +71,7 @@ const Schedule = () => {
                 <div>
                     <table>
                         <thead>
-                            <tr className='sticky top-16'>
+                            <tr className='sticky top-16 z-50'>
                                 <th></th>
                                 <th>Sunday</th>
                                 <th>Monday</th>
@@ -82,31 +92,40 @@ const Schedule = () => {
                             <tr>
                                 <td className='time'>10:00 - 11:00</td>
                                 {generateRow3(apps)}
-                            </tr><tr>
+                            </tr>
+                            <tr>
                                 <td className='time'>11:00 - 12:00</td>
                                 {generateRow4(apps, 8, 9, 10, 11)}
-                            </tr><tr>
+                            </tr>
+                            <tr>
                                 <td className='time'>12:00 - 13:00</td>
                                 {generateRow4(apps, 9, 10, 11, 12)}
-                            </tr><tr>
+                            </tr>
+                            <tr>
                                 <td className='time'>13:00 - 14:00</td>
                                 {generateRow4(apps, 10, 11, 12, 13)}
-                            </tr><tr>
+                            </tr>
+                            <tr>
                                 <td className='time'>14:00 - 15:00</td>
                                 {generateRow4(apps, 11, 12, 13, 14)}
-                            </tr><tr>
+                            </tr>
+                            <tr>
                                 <td className='time'>15:00 - 16:00</td>
                                 {generateRow4(apps, 12, 13, 14, 15)}
-                            </tr><tr>
+                            </tr>
+                            <tr>
                                 <td className='time'>16:00 - 17:00</td>
                                 {generateRow4(apps, 13, 14, 15, 16)}
-                            </tr><tr>
+                            </tr>
+                            <tr>
                                 <td className='time'>17:00 - 18:00</td>
                                 {generateRow4(apps, 14, 15, 16, 17)}
-                            </tr><tr>
+                            </tr>
+                            <tr>
                                 <td className='time'>18:00 - 19:00</td>
                                 {generateRow4(apps, 15, 16, 17, 18)}
-                            </tr><tr>
+                            </tr>
+                            <tr>
                                 <td className='time'>19:00 - 20:00</td>
                                 {generateRow4(apps, 16, 17, 18, 19)}
                             </tr>

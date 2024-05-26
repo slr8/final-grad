@@ -22,7 +22,6 @@ const Login = () => {
         setPassword("")
         setSsn("")
     };
-
     return (
         <div className="login">
             {loading && <Loader />}

@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom'
 
 const HomeBox = ({ img, text, secondText, btnTitle, btnIcon, to }) => {
     const navigate = useNavigate()
+
     function handleSubmit(e) {
         e.preventDefault()
         navigate(`${to}`)
+        navigate(0);
     }
     return (
         <div className='flex justify-around items-center '>
