@@ -13,7 +13,7 @@ const CoursesDetails1 = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://localhost:44377/api/Student/StudentCourses');
+                const response = await axios.get('http://fcischedulewebsite.runasp.net/api/Student/StudentCourses');
                 const fetchedData = response.data;
                 setData(fetchedData);
 
@@ -38,7 +38,7 @@ const CoursesDetails1 = () => {
     }
 
     return (
-        <div className="bg-[#b8d0f2] py-6 text-right">
+        <div className="bg-[#b8d0f2] py-6 mt-16 text-right">
             <ScrollToTop />
             <Header title={'مواد الفرقة الدراسية الأولى'} />
             <div className="h-12 border rounded-2xl mt-4 mb-4 bg-white text-[#0060E4] font-bold text-2xl text-center pt-2 w-[200px] inline-block mr-48">

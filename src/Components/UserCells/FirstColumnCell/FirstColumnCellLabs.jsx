@@ -1,93 +1,40 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Select from 'react-select'
-import { fetchDropLists } from './addInfoSlice';
-import Loader from '../../UI/Loader';
-import { ToastContainer, toast } from 'react-toastify';
+import Select from 'react-select';
 import 'react-toastify/dist/ReactToastify.css';
-import './toastifyOverrides.css'; // Import custom CSS for Toastify
+import { fetchDropLists } from '../../AddInfo/addInfoSlice';
+import Loader from '../../../UI/Loader';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 
-const AddInfoLabs = ({ day,start, cancel, labNumber  }) => {
-    const labNames = {
-        1: '0أ',
-        2: '0ب',
-        3: '0ج',
-        4: '0د',
-        5: '0ه',
-        6: '1أ',
-        7: '1ب',
-        8: '1ج',
-        9: '1د',
-        10: '1ه',
-        11: '2أ',
-        12: '2ب',
-        13: '2ج',
-        14: '2د',
-        15: '2ه',
-        16: '3أ',
-        17: '3ب',
-        18: '3ج',
-        19: '3د',
-        20: '3ه',
-        21: '4أ',
-        22: '4ب',
-        23: '4ج',
-        24: '4د',
-        25: '4ه'
-    };
-    const labName = labNames[labNumber];
+const FirstColumnCellLabs = ({doc,show, place,onToggle, subject, section, group, dep,day, start , year,id , duration}) => {
     const [formData, setFormData] = useState({
-        course: '',
-        duration: '',
-        year: '',
-        department: '',
-        section: '',
-        ta: '',
-        section: ''
+        classId:id,
+        course: subject,
+        ta: doc,
+        duration: duration,
+        year: year,
+        department: dep,
+        section: section,
     });
 
     const handleChange = (field, selectedOption) => {
         setFormData({ ...formData, [field]: selectedOption.value });
     };
-
     const handleSubmit = async (e) => {
       e.preventDefault();
-      const dataToSend = {
-          course: formData.course,
-          ta: formData.ta,
-          duration: parseInt(formData.duration, 10), // convert to integer if needed
-          year: parseInt(formData.year, 10), // convert to integer if needed
-          department: formData.department,
-          day,
-          start: parseInt(start, 10),
-          labName,
-          section: parseInt(formData.section, 10)
-      };
-
       try {
-          const response = await fetch('http://fcischedulewebsite.runasp.net/api/Admin/addclass', {
-              method: 'POST',
+        const response = await axios.put('http://fcischedulewebsite.runasp.net/api/Admin/Update-Class', formData, {
               headers: {
                   'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(dataToSend)
+              }
           });
-
-          if (!response.ok) {
-              const errorDetail = await response.text();
-              throw new Error(`Network response was not ok: ${errorDetail}`);
-          }
-          const contentType = response.headers.get('Content-Type');
-          let result;
-          if (contentType && contentType.includes('application/json')) {
-              result = await response.json();
-          } else {
-              result = await response.text();
-          }
-          toast.success('Lecture added successfully!');
-              window.location.reload();
+          console.log('Response:', response.data);
+          toast.success('Class Updated successfully!');
+          window.location.reload();
       } catch (error) {
-          toast.error(`Error: ${error.message}`);
+          toast.error('Error updating class:', error);
+          // Handle error during submission
       }
   };
 
@@ -108,7 +55,6 @@ const AddInfoLabs = ({ day,start, cancel, labNumber  }) => {
     if (dropListsStatus === 'failed') {
       return <div>Error: {error}</div>;
     }
-  
     function convertToOptions(array) {
         return array.map(item => ({
           value: item,
@@ -128,15 +74,16 @@ const AddInfoLabs = ({ day,start, cancel, labNumber  }) => {
         { value: 2, label: 2 },
         { value: 3, label: 3 },
         { value: 4, label: 4 }
-    ];
+    ]; 
     
       const coursesOptions = dropLists.courses ? convertToOptions(dropLists.courses) : [];
       const departmentsOptions = dropLists.departments ? convertToOptions(dropLists.departments) : [];
       const sectionsOptions = dropLists.sections ? convertToOptions(dropLists.sections) : [];
       const tAsOptions = dropLists.tAs ? convertToOptions(dropLists.tAs) : [];
 
-    return (
-        <form onSubmit={handleSubmit} className='bg-gray-300  w-80 h-52 rounded-r-lg border-l-8 border-solid flex-col border-blue-800 flex justify-center items-center opacity-100 transition-all delay-100 hover:opacity-100'>
+    if(show) {
+        return (
+            <form className='bg-gray-300 w-80 h-56 rounded-r-lg border-l-8 border-solid flex-col border-blue-800 flex justify-center items-center opacity-100 transition-all delay-100 hover:opacity-100'>
             <ToastContainer
             position="bottom-left"
             autoClose={5000}
@@ -149,54 +96,66 @@ const AddInfoLabs = ({ day,start, cancel, labNumber  }) => {
             <input type="hidden" name="day" value={day} /> {/* Hidden input for day */}
             <input type="hidden" name="startTime" value={start} /> {/* Hidden input for startTime */}
             <div className='flex flex-col'>
-                <div className='flex gap-2 mx-2'>
+                <div className='flex gap-2  justify-center items-center  mx-2'>
                     <Select
                      options={coursesOptions} 
-                     placeholder="Course"
+                     placeholder={subject? subject : "Course"}
                      className='w-36 bg-[#0060e4] text-black pl-2 rounded-md'
                      onChange={(selectedOption) => handleChange('course', selectedOption)}
                       />
                     <Select
                     options={tAsOptions}
-                     placeholder="Ta" 
+                     placeholder={doc? doc : "Ta"} 
                      className='w-36 bg-[#0060e4] text-black pl-2 rounded-md'
                      onChange={(selectedOption) => handleChange('ta', selectedOption)}
                      />
                 </div>
-                <div className='flex gap-2 mx-2 mt-3'>
+                <div className='flex gap-2 justify-center items-center  mx-2 mt-3'>
                     <Select 
                     options={durationOptions} 
-                    placeholder="Duration"
+                    placeholder={duration? duration : "Duration"}
                      className='w-36 bg-[#0060e4] text-black pl-2 rounded-md'
                      onChange={(selectedOption) => handleChange('duration', selectedOption)}
                      />
                     <Select options={yearOptions} 
-                    placeholder="Year"
+                    placeholder={year? year : "Year"}
                      className='w-36 bg-[#0060e4] text-black pl-2 rounded-md'
                      onChange={(selectedOption) => handleChange('year', selectedOption)}
                      />
                 </div>
-                <div className='flex gap-2 mx-2 mt-3'>
+                <div className='flex gap-2 justify-center items-center  mx-2 mt-3'>
                     <Select 
                     options={departmentsOptions}
-                     placeholder="Department"
+                     placeholder={dep? dep : "Department"}
                       className='w-36 bg-[#0060e4] text-black pl-2 rounded-md'
                       onChange={(selectedOption) => handleChange('department', selectedOption)}
                       />
                     <Select
                      options={sectionsOptions}
-                      placeholder="Section"
+                      placeholder={section? section : "Section"}
                        className='w-36 bg-[#0060e4] text-black pl-2 rounded-md'
                        onChange={(selectedOption) => handleChange('section', selectedOption)}
                        />
                 </div>
             </div>
             <div className='flex gap-5 mt-3'>
-                <button className='bg-red-700 ml-5  mt-1 py-1 px-4' onClick={cancel}>Cancel</button>
-                <button className='bg-green-500 ml-0  mr-5 mt-1 py-1 px-4'>Submit</button>
+                <button className='bg-red-700 ml-5  mt-1 py-1 px-4' onClick={onToggle}>Cancel</button>
+                <button className='bg-green-500 ml-0  mr-5 mt-1 py-1 px-4' onClick={handleSubmit}>Submit</button>
             </div>
         </form >
     )
+    }
+    return (
+        <div className={`border-solid border-l-8 relative border-[#0060E4] bg-[#006BFF8A] flex items-center justify-center flex-col text-white text-xl rounded-r-[15px] font-bold h-[100%]`}>
+            <p className='m-1'>{doc}</p>
+            <p className='m-1'>{subject}</p>
+            <p className='m-1'>{place}</p>
+            {year && <p className='m-1'>Year: {year}</p>}
+            {section && <p className='m-1'>section: {section}</p>}
+            {group && <p className='m-1'>group: {group}</p>}
+            <p className='m-1'>{dep}</p>
+        </div>
+    )
 }
 
-export default AddInfoLabs
+export default FirstColumnCellLabs

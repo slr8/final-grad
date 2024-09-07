@@ -20,7 +20,7 @@ export const fetchData = () => {
     return dispatch => {
         dispatch(fetchDataRequest());
 
-        fetch('https://localhost:44377/api/ITTechnical/GetLaboratoriesWithDevices')
+        fetch('http://fcischedulewebsite.runasp.net/api/ITTechnical/GetLaboratoriesWithDevices')
             .then(response => response.json())
             .then(data => dispatch(fetchDataSuccess(data)))
             .catch(error => dispatch(fetchDataFailure(error)));

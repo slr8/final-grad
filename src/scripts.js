@@ -1,10 +1,10 @@
 import FifthColumnCell from "./Components/UserCells/FifthColumnCell/FifthColumnCell";
-import FirstColumnCell from "./Components/UserCells/FirstColumnCell/FirstColumnCell";
+import FirstColumnCellUser from "./Components/UserCells/FirstColumnCell/FirstColumnCellUser";
 import FourthColumnCell from "./Components/UserCells/FourthColumnCell/FourthColumnCell";
 import SecondColumnCell from "./Components/UserCells/SecondColumnCell/SecondColumnCell";
 import ThirdColumnCell from "./Components/UserCells/ThirdColumnCell/ThirdColumnCell";
 const daysOfWeek = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday'];
-const columnComponents = [FirstColumnCell, SecondColumnCell, ThirdColumnCell, FourthColumnCell, FifthColumnCell];
+const columnComponents = [FirstColumnCellUser, SecondColumnCell, ThirdColumnCell, FourthColumnCell, FifthColumnCell];
 
 export const generateRow1 = (apps) => {
     const cells = [];

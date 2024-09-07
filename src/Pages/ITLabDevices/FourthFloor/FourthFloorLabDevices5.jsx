@@ -28,7 +28,7 @@ const FourthFloorLabDevices5 = () => {
     return (
         <div>
             <ScrollToTop />
-            <div className="flex justify-center pt-8" >
+            <div className="flex justify-center pt-8 mt-16" >
                 <div className="bg-[#0060E4] text-gradient rounded-2xl shadow-md h-16 w-52  text-center flex justify-center items-center">
                     <h1 className="text-4xl font-medium text-[#FFFFFF]">معمل 4هـ</h1>
                 </div>
@@ -46,17 +46,20 @@ const FourthFloorLabDevices5 = () => {
                                         img={`/Images/ITDevices/Vector.png`}
                                         name={lab.deviceName}
                                         no={lab.deviceNumber}
+                                        id={lab.deviceId}
                                     /> :
                                     lab.status === "In Repair" ?
                                         < DevicesYellowBox
                                             img={`/Images/ITDevices/Vector.png`}
                                             name={lab.deviceName}
                                             no={lab.deviceNumber}
+                                            id={lab.deviceId}
                                         /> :
                                         < DevicesRedBox
                                             img={`/Images/ITDevices/Vector.png`}
                                             name={lab.deviceName}
                                             no={lab.deviceNumber}
+                                            id={lab.deviceId}
                                         /> : null
                         )
                     }
@@ -91,15 +94,18 @@ const FourthFloorLabDevices5 = () => {
                                     < DevicesGreenBox
                                         img={`/Images/ITDevices/${lab.deviceName === "AC" ? "Group.png" : "Vector (1).png"}`}
                                         name={lab.deviceName}
+                                        id={lab.deviceId}
                                     /> :
                                     lab.status === "In Repair" ?
                                         < DevicesYellowBox
                                             img={`/Images/ITDevices/${lab.deviceName === "AC" ? "Group.png" : "Vector (1).png"}`}
                                             name={lab.deviceName}
+                                            id={lab.deviceId}
                                         /> :
                                         < DevicesRedBox
                                             img={`/Images/ITDevices/${lab.deviceName === "AC" ? "Group.png" : "Vector (1).png"}`}
                                             name={lab.deviceName}
+                                            id={lab.deviceId}
                                         /> : null
                         )
                     }

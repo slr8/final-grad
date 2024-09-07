@@ -12,7 +12,7 @@ const ITHome = () => {
         dispatch(logoutUser(navigate))
     }
     return (
-        <div className='relative h-screen overflow-hidden'>
+        <div className='relative h-screen mt-16 overflow-hidden'>
             <ScrollToTop />
             <img src="/Images/ITHome/undraw_Dev_productivity_re_fylf 1.png" className='absolute' />
             <div className="bg-hero-pattern bg-cover bg-no-repeat h-screen w-[1500px] mb-10">

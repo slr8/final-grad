@@ -41,7 +41,7 @@ const Schedule = () => {
         for (let i = start; i <= end; i++) {
             const appointmentKey = `${day.toLowerCase()}${i}`;
             appointmentsObj[appointmentKey] = data.find(e =>
-                e.day.toLowerCase() === day.toLowerCase() && e.startTime === i
+                e.day?.toLowerCase() === day?.toLowerCase() && e?.startTime === i
             );
         }
         return appointmentsObj;
@@ -60,7 +60,7 @@ const Schedule = () => {
     }
 
     return (
-        <div className='bg-[#0060E42B]'>
+        <div className='bg-[#0060E42B] mt-16'>
             <ScrollToTop />
             <div className='flex justify-between px-20 items-center'>
                 <img src="/Images/Schedule/Assiut_University_logo 1.png" className='w-[100px]' />

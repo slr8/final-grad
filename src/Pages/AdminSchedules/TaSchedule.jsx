@@ -1,9 +1,9 @@
 import React from 'react'
 import TeachingStaffHeader from '../../Components/TeachingStaffHeader/TeachingStaffHeader'
-import TeachingStaffBodySchedule from '../../Components/ProfsBodySchedule/ProfsBodySchedule'
 import ScrollToTop from '../../UI/ScrollToTop'
+import TABodySchedule from '../../Components/TABodySchedule/TABodySchedule'
 
-const ProfSchedule = () => {
+const TaSchedule = () => {
     return (
         <div className='bg-[#0060E42B] w-max mt-16'>
             <ScrollToTop />
@@ -16,11 +16,11 @@ const ProfSchedule = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <TeachingStaffBodySchedule day={"Sunday"} />
-                            <TeachingStaffBodySchedule day={"Monday"} />
-                            <TeachingStaffBodySchedule day={"Tuesday"} />
-                            <TeachingStaffBodySchedule day={"Wednesday"} />
-                            <TeachingStaffBodySchedule day={"Thursday"} />
+                            <TABodySchedule day={"Sunday"} />
+                            <TABodySchedule day={"Monday"} />
+                            <TABodySchedule day={"Tuesday"} />
+                            <TABodySchedule day={"Wednesday"} />
+                            <TABodySchedule day={"Thursday"} />
                         </tbody>
                     </table >
                 </div >
@@ -28,4 +28,4 @@ const ProfSchedule = () => {
         </div>)
 }
 
-export default ProfSchedule
+export default TaSchedule

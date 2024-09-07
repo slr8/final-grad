@@ -1,15 +1,10 @@
 import React from 'react'
-import FirstColumnCell from '../../Components/UserCells/FirstColumnCell/FirstColumnCell'
-import SecondColumnCell from '../../Components/UserCells/SecondColumnCell/SecondColumnCell'
-import ThirdColumnCell from '../../Components/UserCells/ThirdColumnCell/ThirdColumnCell'
-import FourthColumnCell from '../../Components/UserCells/FourthColumnCell/FourthColumnCell'
-import FifthColumnCell from '../../Components/UserCells/FifthColumnCell/FifthColumnCell'
 import ScrollToTop from '../../UI/ScrollToTop'
 import HallsBodySchedule from '../../Components/HallsBodySchedule/HallsBodySchedule'
 
 const HallsSchedule = () => {
     return (
-        <div className='bg-[#0060E42B] w-max'>
+        <div className='bg-[#0060E42B] w-max mt-16'>
             <ScrollToTop />
             <div>
                 <div>

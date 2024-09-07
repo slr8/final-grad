@@ -3,7 +3,7 @@ import css from './contactus.module.css'
 
 const ContactUs = () => {
     return (
-        <div className='bg-[#e8f0fe] -z-20 h-screen'>
+        <div className='bg-[#e8f0fe] -z-20 pb-14 mt-16'>
             <img src="/Images/ContactUs/WhatsApp Image 2024-01-10 at 22.38 1.png" className='-z-10 absolute left-[30rem] top-4 w-[600px]' />
             <div classNameName={css.contact + 'bg-[#0059D5] bg-opacity-50 h-full flex items-center justify-center text-white p-8'}>
                 <div className={css.container}>

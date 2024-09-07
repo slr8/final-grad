@@ -30,3 +30,9 @@
     background-color: #0060E4;
     color: white;
 }
+.focus2 {
+    background-color: #2377ec;
+    color: white;
+    padding: 5px;
+    border-radius: 12px;
+}

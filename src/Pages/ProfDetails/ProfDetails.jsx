@@ -12,7 +12,7 @@ const ProfDetails = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://localhost:44377/api/TeachingStaff/ViewProfessor');
+                const response = await axios.get('http://fcischedulewebsite.runasp.net/api/TeachingStaff/ViewProfessor');
                 setData(response.data);
             } catch (error) {
                 console.log(error);
@@ -29,7 +29,7 @@ const ProfDetails = () => {
     }
 
     return (
-        <div className='bg-[#C5D1F2] h-full'>
+        <div className='bg-[#C5D1F2] mt-16 h-full'>
             <ScrollToTop />
             <Header title={"Professors"} />
             <div className='grid grid-cols-3 gap-y-14 place-items-center mt-8 pb-8'>

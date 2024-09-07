@@ -28,7 +28,7 @@ const ITHallDevices8 = () => {
     return (
         <div className='mb-5'>
             <ScrollToTop />
-            <div className="flex justify-center pt-8" >
+            <div className="flex justify-center pt-8 mt-16" >
                 <div className="bg-[#0060E4] text-gradient rounded-2xl shadow-md h-16 w-52  text-center flex justify-center items-center">
                     <h1 className="text-4xl font-medium text-[#FFFFFF]">مدرج 8</h1>
                 </div>
@@ -46,6 +46,7 @@ const ITHallDevices8 = () => {
                                         : hall.deviceName === "PC"? "Vector.png" : "Vector (1).png"}`}
                                         name={hall.deviceName}
                                         {...(hall.deviceName === "PC" ? {no: hall.deviceNumber} : {})}
+                                        id={hall.deviceId}
                                         /> :
                                     hall.status === "In Repair" ?
                                         < DevicesYellowBox
@@ -53,12 +54,14 @@ const ITHallDevices8 = () => {
                                         : hall.deviceName === "PC"? "Vector.png" : "Vector (1).png"}`}
                                         name={hall.deviceName}
                                         {...(hall.deviceName === "PC" ? {no: hall.deviceNumber} : {})}
+                                        id={hall.deviceId}
                                         /> :
                                         < DevicesRedBox
                                         img={`/Images/ITDevices/${hall.deviceName === "AC" ? "Group.png" 
                                         : hall.deviceName === "PC"? "Vector.png" : "Vector (1).png"}`}
                                         name={hall.deviceName}
                                         {...(hall.deviceName === "PC" ? {no: hall.deviceNumber} : {})}
+                                        id={hall.deviceId}
                                         />
                         )
                     }

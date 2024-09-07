@@ -59,6 +59,7 @@ import ITHallDevices3 from './Pages/ITHallDevices/ITHallDevices3';
 import CoursesDetails1 from './Pages/CoursesDetails/CoursesDetails1';
 import CoursesDetails2 from './Pages/CoursesDetails/CoursesDetails2';
 import CoursesDetails4 from './Pages/CoursesDetails/CoursesDetails4';
+import TaSchedule from './Pages/AdminSchedules/TaSchedule';
 
 const router = createBrowserRouter([
   {
@@ -295,6 +296,10 @@ const router = createBrowserRouter([
       {
         path: "ProfSchedule",
         element: <ProfSchedule />
+      },
+      {
+        path: "TaSchedule",
+        element: <TaSchedule />
       },
     ]
   }

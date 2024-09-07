@@ -1,176 +1,12 @@
 import { useState } from "react";
 import AddInfoLabs from "../AddInfo/AddInfoLabs";
 import AddOnHover from "../AddOnHover/AddOnHover";
-import FirstColumnCell from "../UserCells/FirstColumnCell/FirstColumnCell";
-import CRUDOnHover from "../CRUDOnHover/CRUDOnHover";
+import CRUDOnHoverClass from "../CRUDOnHover/CRUDOnHoverClass";
+import { labs as cellData} from "./generateLabs";
+import FirstColumnCellLabs from "../UserCells/FirstColumnCell/FirstColumnCellLabs";
+console.log(cellData);
 
-const labData = {
-    "schedule": [
-        {
-            "teachingStaffName": "Daniel Anderson",
-            "courseName": "Introduction to Programming",
-            "day": "sunday",
-            "startTime": 8,
-            "duration": 1,
-            "year": 4,
-            "location": "0د",
-            "section": 7,
-            "groupNumber": null,
-            "departmentName": null
-        },
-        {
-            "teachingStaffName": "John Smith",
-            "courseName": "Course 31",
-            "day": "Monday",
-            "startTime": 8,
-            "duration": 4,
-            "year": 4,
-            "location": "0أ",
-            "section": null,
-            "groupNumber": null,
-            "departmentName": "BI"
-        }
-    ]
-}
-const generateAppointments = (day, lab, labNum, start, end) => {
-    const appointmentsObj = {};
-    for (let i = start; i <= end; i++) {
-        const appointmentKey = `${day.toLowerCase()}${i + labNum}`;
-        appointmentsObj[appointmentKey] = labData.schedule.find(e =>
-            e.day.toLowerCase() === day.toLowerCase() && e.startTime === i && e.location === lab
-        );
-    }
-    return appointmentsObj;
-};
-export const cellData = {
-    ...generateAppointments("Sunday", "0أ", "1", 8, 19),
-    ...generateAppointments("Sunday", "0ب", "2", 8, 19),
-    ...generateAppointments("Sunday", "0ج", "3", 8, 19),
-    ...generateAppointments("Sunday", "0د", "4", 8, 19),
-    ...generateAppointments("Sunday", "0ه", "5", 8, 19),
-    ...generateAppointments("Sunday", "1أ", "6", 8, 19),
-    ...generateAppointments("Sunday", "1ب", "7", 8, 19),
-    ...generateAppointments("Sunday", "1ج", "8", 8, 19),
-    ...generateAppointments("Sunday", "1د", "9", 8, 19),
-    ...generateAppointments("Sunday", "1ه", "10", 8, 19),
-    ...generateAppointments("Sunday", "2أ", "11", 8, 19),
-    ...generateAppointments("Sunday", "2ب", "12", 8, 19),
-    ...generateAppointments("Sunday", "2ج", "13", 8, 19),
-    ...generateAppointments("Sunday", "2د", "14", 8, 19),
-    ...generateAppointments("Sunday", "2ه", "15", 8, 19),
-    ...generateAppointments("Sunday", "3أ", "16", 8, 19),
-    ...generateAppointments("Sunday", "3ب", "17", 8, 19),
-    ...generateAppointments("Sunday", "3ج", "18", 8, 19),
-    ...generateAppointments("Sunday", "3د", "19", 8, 19),
-    ...generateAppointments("Sunday", "3ه", "20", 8, 19),
-    ...generateAppointments("Sunday", "4أ", "21", 8, 19),
-    ...generateAppointments("Sunday", "4ب", "22", 8, 19),
-    ...generateAppointments("Sunday", "4ج", "23", 8, 19),
-    ...generateAppointments("Sunday", "4د", "24", 8, 19),
-    ...generateAppointments("Sunday", "4ه", "25", 8, 19),
-    ...generateAppointments("monday", "0أ", "1", 8, 19),
-    ...generateAppointments("monday", "0ب", "2", 8, 19),
-    ...generateAppointments("monday", "0ج", "3", 8, 19),
-    ...generateAppointments("monday", "0د", "4", 8, 19),
-    ...generateAppointments("monday", "0ه", "5", 8, 19),
-    ...generateAppointments("monday", "1أ", "6", 8, 19),
-    ...generateAppointments("monday", "1ب", "7", 8, 19),
-    ...generateAppointments("monday", "1ج", "8", 8, 19),
-    ...generateAppointments("monday", "1د", "9", 8, 19),
-    ...generateAppointments("monday", "1ه", "10", 8, 19),
-    ...generateAppointments("monday", "2أ", "11", 8, 19),
-    ...generateAppointments("monday", "2ب", "12", 8, 19),
-    ...generateAppointments("monday", "2ج", "13", 8, 19),
-    ...generateAppointments("monday", "2د", "14", 8, 19),
-    ...generateAppointments("monday", "2ه", "15", 8, 19),
-    ...generateAppointments("monday", "3أ", "16", 8, 19),
-    ...generateAppointments("monday", "3ب", "17", 8, 19),
-    ...generateAppointments("monday", "3ج", "18", 8, 19),
-    ...generateAppointments("monday", "3د", "19", 8, 19),
-    ...generateAppointments("monday", "3ه", "20", 8, 19),
-    ...generateAppointments("monday", "4أ", "21", 8, 19),
-    ...generateAppointments("monday", "4ب", "22", 8, 19),
-    ...generateAppointments("monday", "4ج", "23", 8, 19),
-    ...generateAppointments("monday", "4د", "24", 8, 19),
-    ...generateAppointments("monday", "4ه", "25", 8, 19),
-    ...generateAppointments("tuesday", "0أ", "1", 8, 19),
-    ...generateAppointments("tuesday", "0ب", "2", 8, 19),
-    ...generateAppointments("tuesday", "0ج", "3", 8, 19),
-    ...generateAppointments("tuesday", "0د", "4", 8, 19),
-    ...generateAppointments("tuesday", "0ه", "5", 8, 19),
-    ...generateAppointments("tuesday", "1أ", "6", 8, 19),
-    ...generateAppointments("tuesday", "1ب", "7", 8, 19),
-    ...generateAppointments("tuesday", "1ج", "8", 8, 19),
-    ...generateAppointments("tuesday", "1د", "9", 8, 19),
-    ...generateAppointments("tuesday", "1ه", "10", 8, 19),
-    ...generateAppointments("tuesday", "2أ", "11", 8, 19),
-    ...generateAppointments("tuesday", "2ب", "12", 8, 19),
-    ...generateAppointments("tuesday", "2ج", "13", 8, 19),
-    ...generateAppointments("tuesday", "2د", "14", 8, 19),
-    ...generateAppointments("tuesday", "2ه", "15", 8, 19),
-    ...generateAppointments("tuesday", "3أ", "16", 8, 19),
-    ...generateAppointments("tuesday", "3ب", "17", 8, 19),
-    ...generateAppointments("tuesday", "3ج", "18", 8, 19),
-    ...generateAppointments("tuesday", "3د", "19", 8, 19),
-    ...generateAppointments("tuesday", "3ه", "20", 8, 19),
-    ...generateAppointments("tuesday", "4أ", "21", 8, 19),
-    ...generateAppointments("tuesday", "4ب", "22", 8, 19),
-    ...generateAppointments("tuesday", "4ج", "23", 8, 19),
-    ...generateAppointments("tuesday", "4د", "24", 8, 19),
-    ...generateAppointments("tuesday", "4ه", "25", 8, 19),
-    ...generateAppointments("wednesday", "0أ", "1", 8, 19),
-    ...generateAppointments("wednesday", "0ب", "2", 8, 19),
-    ...generateAppointments("wednesday", "0ج", "3", 8, 19),
-    ...generateAppointments("wednesday", "0د", "4", 8, 19),
-    ...generateAppointments("wednesday", "0ه", "5", 8, 19),
-    ...generateAppointments("wednesday", "1أ", "6", 8, 19),
-    ...generateAppointments("wednesday", "1ب", "7", 8, 19),
-    ...generateAppointments("wednesday", "1ج", "8", 8, 19),
-    ...generateAppointments("wednesday", "1د", "9", 8, 19),
-    ...generateAppointments("wednesday", "1ه", "10", 8, 19),
-    ...generateAppointments("wednesday", "2أ", "11", 8, 19),
-    ...generateAppointments("wednesday", "2ب", "12", 8, 19),
-    ...generateAppointments("wednesday", "2ج", "13", 8, 19),
-    ...generateAppointments("wednesday", "2د", "14", 8, 19),
-    ...generateAppointments("wednesday", "2ه", "15", 8, 19),
-    ...generateAppointments("wednesday", "3أ", "16", 8, 19),
-    ...generateAppointments("wednesday", "3ب", "17", 8, 19),
-    ...generateAppointments("wednesday", "3ج", "18", 8, 19),
-    ...generateAppointments("wednesday", "3د", "19", 8, 19),
-    ...generateAppointments("wednesday", "3ه", "20", 8, 19),
-    ...generateAppointments("wednesday", "4أ", "21", 8, 19),
-    ...generateAppointments("wednesday", "4ب", "22", 8, 19),
-    ...generateAppointments("wednesday", "4ج", "23", 8, 19),
-    ...generateAppointments("wednesday", "4د", "24", 8, 19),
-    ...generateAppointments("wednesday", "4ه", "25", 8, 19),
-    ...generateAppointments("thursday", "0أ", "1", 8, 19),
-    ...generateAppointments("thursday", "0ب", "2", 8, 19),
-    ...generateAppointments("thursday", "0ج", "3", 8, 19),
-    ...generateAppointments("thursday", "0د", "4", 8, 19),
-    ...generateAppointments("thursday", "0ه", "5", 8, 19),
-    ...generateAppointments("thursday", "1أ", "6", 8, 19),
-    ...generateAppointments("thursday", "1ب", "7", 8, 19),
-    ...generateAppointments("thursday", "1ج", "8", 8, 19),
-    ...generateAppointments("thursday", "1د", "9", 8, 19),
-    ...generateAppointments("thursday", "1ه", "10", 8, 19),
-    ...generateAppointments("thursday", "2أ", "11", 8, 19),
-    ...generateAppointments("thursday", "2ب", "12", 8, 19),
-    ...generateAppointments("thursday", "2ج", "13", 8, 19),
-    ...generateAppointments("thursday", "2د", "14", 8, 19),
-    ...generateAppointments("thursday", "2ه", "15", 8, 19),
-    ...generateAppointments("thursday", "3أ", "16", 8, 19),
-    ...generateAppointments("thursday", "3ب", "17", 8, 19),
-    ...generateAppointments("thursday", "3ج", "18", 8, 19),
-    ...generateAppointments("thursday", "3د", "19", 8, 19),
-    ...generateAppointments("thursday", "3ه", "20", 8, 19),
-    ...generateAppointments("thursday", "4أ", "21", 8, 19),
-    ...generateAppointments("thursday", "4ب", "22", 8, 19),
-    ...generateAppointments("thursday", "4ج", "23", 8, 19),
-    ...generateAppointments("thursday", "4د", "24", 8, 19),
-    ...generateAppointments("thursday", "4ه", "25", 8, 19),
-};
-
-export function useScheduleCells(day, cellData, labs) {
+export function useScheduleCells(day, labs) {
     const [cellStates, setCellStates] = useState({}); // State to track the open/close state of each cell
     const [data, setData] = useState(cellData);
     function toggleCellState(cellKey) {
@@ -206,24 +42,29 @@ export function useScheduleCells(day, cellData, labs) {
                         />
                         :null}
                 {currentSchedule && (
-                    <FirstColumnCell
-                        doc={currentSchedule?.teachingStaffName}
-                        subject={currentSchedule?.courseName}
-                        place={currentSchedule?.location}
+                    <FirstColumnCellLabs
+                        doc={currentSchedule?.ta}
+                        subject={currentSchedule?.course}
+                        place={currentSchedule?.department}
                         year={currentSchedule?.year}
                         section={currentSchedule?.section}
+                        duration={currentSchedule?.duration}
                         group={currentSchedule?.groupNumber}
-                        dep={currentSchedule?.departmentName}
+                        dep={currentSchedule?.department}
+                        show={cellStates[cellKey]}
+                        onToggle={() => toggleCellState(cellKey)}
+                        id={currentSchedule?.classId}
                     />
                 )}
-                {currentSchedule && <CRUDOnHover onDelete={() => handleDelete(cellKey)}/>}
+                {currentSchedule && <CRUDOnHoverClass id={currentSchedule?.classId} show={cellStates[cellKey]}
+                    onToggle={() => toggleCellState(cellKey)}/>}
             </td>
         );
     }
 
     return cells;
 }
-export const useScheduleCells2 = (day, cellData, labs) => {
+export const useScheduleCells2 = (day, labs) => {
     const [cellStates, setCellStates] = useState({}); // State to track the open/close state of each cell
 
     function toggleCellState(cellKey) {
@@ -256,24 +97,29 @@ export const useScheduleCells2 = (day, cellData, labs) => {
                         />
                     )}
                     {currentSchedule2 && (
-                        <FirstColumnCell
-                            doc={currentSchedule2?.teachingStaffName}
-                            subject={currentSchedule2?.courseName}
-                            place={currentSchedule2?.location}
-                            year={currentSchedule2?.year}
-                            section={currentSchedule2?.section}
-                            group={currentSchedule2?.groupNumber}
-                            dep={currentSchedule2?.departmentName}
+                        <FirstColumnCellLabs
+                        doc={currentSchedule2?.ta}
+                        subject={currentSchedule2?.course}
+                        place={currentSchedule2?.department}
+                        year={currentSchedule2?.year}
+                        section={currentSchedule2?.section}
+                        duration={currentSchedule2?.duration}
+                        group={currentSchedule2?.groupNumber}
+                        dep={currentSchedule2?.department}
+                        show={cellStates[cellKey]}
+                        onToggle={() => toggleCellState(cellKey)}
+                        id={currentSchedule2?.classId}
                         />
                     )}
-                    {currentSchedule2 && <CRUDOnHover tr={cellStates[cellKey]}/>}
+                    {currentSchedule2 && <CRUDOnHoverClass  id={currentSchedule2?.classId} show={cellStates[cellKey]}
+                    onToggle={() => toggleCellState(cellKey)} />}
                 </td>
         );
     }
 
     return cells;
 };
-export const useScheduleCells3 = (day, cellData, labs) => {
+export const useScheduleCells3 = (day,  labs) => {
     const [cellStates, setCellStates] = useState({}); // State to track the open/close state of each cell
 
     function toggleCellState(cellKey) {
@@ -307,24 +153,29 @@ export const useScheduleCells3 = (day, cellData, labs) => {
                         />
                     )}
                     {currentSchedule3 && (
-                        <FirstColumnCell
-                            doc={currentSchedule3?.teachingStaffName}
-                            subject={currentSchedule3?.courseName}
-                            place={currentSchedule3?.location}
-                            year={currentSchedule3?.year}
-                            section={currentSchedule3?.section}
-                            group={currentSchedule3?.groupNumber}
-                            dep={currentSchedule3?.departmentName}
+                        <FirstColumnCellLabs
+                        doc={currentSchedule3?.ta}
+                        subject={currentSchedule3?.course}
+                        place={currentSchedule3?.department}
+                        year={currentSchedule3?.year}
+                        section={currentSchedule3?.section}
+                        duration={currentSchedule3?.duration}
+                        group={currentSchedule3?.groupNumber}
+                        dep={currentSchedule3?.department}
+                        show={cellStates[cellKey]}
+                        onToggle={() => toggleCellState(cellKey)}
+                        id={currentSchedule3?.classId}
                         />
                     )}
-                    {currentSchedule3 && <CRUDOnHover tr={cellStates[cellKey]}/>}
+                    {currentSchedule3 && <CRUDOnHoverClass  id={currentSchedule3?.classId}  show={cellStates[cellKey]}
+                    onToggle={() => toggleCellState(cellKey)}/>}
                 </td>
         );
     }
 
     return cells;
 };
-export const useScheduleCells4 = (day, cellData, labs, one, two, three, four) => {
+export const useScheduleCells4 = (day,  labs, one, two, three, four) => {
     const [cellStates, setCellStates] = useState({}); // State to track the open/close state of each cell
 
     function toggleCellState(cellKey) {
@@ -359,17 +210,22 @@ export const useScheduleCells4 = (day, cellData, labs, one, two, three, four) =>
                         />
                     )}
                     {currentSchedule4 && (
-                        <FirstColumnCell
-                            doc={currentSchedule4?.teachingStaffName}
-                            subject={currentSchedule4?.courseName}
-                            place={currentSchedule4?.location}
-                            year={currentSchedule4?.year}
-                            section={currentSchedule4?.section}
-                            group={currentSchedule4?.groupNumber}
-                            dep={currentSchedule4?.departmentName}
+                        <FirstColumnCellLabs
+                        doc={currentSchedule4?.ta}
+                        subject={currentSchedule4?.course}
+                        place={currentSchedule4?.department}
+                        year={currentSchedule4?.year}
+                        section={currentSchedule4?.section}
+                        duration={currentSchedule4?.duration}
+                        group={currentSchedule4?.groupNumber}
+                        dep={currentSchedule4?.department}
+                        show={cellStates[cellKey]}
+                        onToggle={() => toggleCellState(cellKey)}
+                        id={currentSchedule4?.classId}
                         />
                     )}
-                    {currentSchedule4 && <CRUDOnHover tr={cellStates[cellKey]}/>}
+                    {currentSchedule4 && <CRUDOnHoverClass id={currentSchedule4?.classId}  show={cellStates[cellKey]}
+                    onToggle={() => toggleCellState(cellKey)}/>}
                 </td>
         );
     }

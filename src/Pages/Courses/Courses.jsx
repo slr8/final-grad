@@ -22,7 +22,7 @@ const Courses = () => {
         navigate(`coursesDetails4`)
     }
     return (
-        <div className="bg-[#0060E430] h-screen overflow-hidden">
+        <div className="bg-[#0060E430] h-screen mt-16 overflow-hidden">
             <ScrollToTop />
             <Header title={'Courses'} />
             <div className='flex justify-center items-center gap-8 gap-y-8'>

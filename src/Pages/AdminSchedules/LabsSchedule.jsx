@@ -5,7 +5,7 @@ import LabsBodySchedule from '../../Components/LabsBodySchedule/LabsBodySchedule
 
 const LabsSchedule = () => {
     return (
-        <div className='bg-[#0060E42B] w-max'>
+        <div className='bg-[#0060E42B] w-max mt-16'>
             <ScrollToTop />
             <div>
                 <div>

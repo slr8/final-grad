@@ -12,7 +12,7 @@ const TADetails = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://localhost:44377/api/TeachingStaff/ViewTeachingAssistant');
+                const response = await axios.get('http://fcischedulewebsite.runasp.net/api/TeachingStaff/ViewTeachingAssistant');
                 setData(response.data);
             } catch (error) {
                 console.log(error);
@@ -29,7 +29,7 @@ const TADetails = () => {
     }
 
     return (
-        <div className='bg-[#C5D1F2] h-full'>
+        <div className='bg-[#C5D1F2] mt-16 h-full'>
             <ScrollToTop />
             <Header title={"TA's"} />
             <div className='grid grid-cols-3 gap-y-14 place-items-center mt-8 pb-8'>
