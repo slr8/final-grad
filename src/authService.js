@@ -1,7 +1,7 @@
 // authService.js
 import axios from 'axios';
 
-const BASE_URL = 'http://fcischedulewebsite.runasp.net/api/Login/Login';
+const BASE_URL = 'https://fcischedulewebsite.runasp.net/api/Login/Login';
 
 const authService = {
     login: async (ssn, password) => {

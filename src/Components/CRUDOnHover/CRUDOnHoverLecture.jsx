@@ -4,7 +4,7 @@ import React from 'react';
 const CRUDOnHoverLecture = ({ id, show, onToggle }) => {
     const handleDelete = async () => {
         try {
-            const response = await axios.delete(`http://fcischedulewebsite.runasp.net/api/Admin/DeleteLecture`, {
+            const response = await axios.delete(`https://fcischedulewebsite.runasp.net/api/Admin/DeleteLecture`, {
                 data: { id: id }
             });
             console.log('Delete successful:', response.data);

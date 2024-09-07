@@ -14,7 +14,7 @@ const generateAppointments = (day, lab, labNum, start, end) => {
 };
 
 
-fetch('http://fcischedulewebsite.runasp.net/api/Admin/GetAllClasses')
+fetch('https://fcischedulewebsite.runasp.net/api/Admin/GetAllClasses')
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');

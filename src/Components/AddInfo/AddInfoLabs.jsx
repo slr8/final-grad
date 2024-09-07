@@ -65,7 +65,7 @@ const AddInfoLabs = ({ day,start, cancel, labNumber  }) => {
       };
 
       try {
-          const response = await fetch('http://fcischedulewebsite.runasp.net/api/Admin/addclass', {
+          const response = await fetch('https://fcischedulewebsite.runasp.net/api/Admin/addclass', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json'
