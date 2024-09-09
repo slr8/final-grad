@@ -13,7 +13,7 @@ const generateAppointments = (day, hall, labNum, start, end) => {
     return appointmentsObj;
 };
 
-fetch('https://fcischedulewebsite.runasp.net/api/Admin/GetAllLectures')
+fetch('http://fcischedulewebsite.runasp.net/api/Admin/GetAllLectures')
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');

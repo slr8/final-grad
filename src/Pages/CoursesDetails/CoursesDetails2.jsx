@@ -13,7 +13,7 @@ const CoursesDetails2 = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://fcischedulewebsite.runasp.net/api/Student/StudentCourses');
+                const response = await axios.get('http://fcischedulewebsite.runasp.net/api/Student/StudentCourses');
                 const fetchedData = response.data;
                 setData(fetchedData);
                 

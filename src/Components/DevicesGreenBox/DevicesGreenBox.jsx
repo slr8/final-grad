@@ -17,7 +17,7 @@ const DevicesGreenBox = ({ img, name, no , id}) => {
         };
 
         try {
-            const response = await fetch('https://fcischedulewebsite.runasp.net/api/ITTechnical/update-status', {
+            const response = await fetch('http://fcischedulewebsite.runasp.net/api/ITTechnical/update-status', {
                 method: 'PUT', 
                 headers: {
                     'Content-Type': 'application/json',

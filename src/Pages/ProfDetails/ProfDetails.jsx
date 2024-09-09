@@ -12,7 +12,7 @@ const ProfDetails = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://fcischedulewebsite.runasp.net/api/TeachingStaff/ViewProfessor');
+                const response = await axios.get('http://fcischedulewebsite.runasp.net/api/TeachingStaff/ViewProfessor');
                 setData(response.data);
             } catch (error) {
                 console.log(error);

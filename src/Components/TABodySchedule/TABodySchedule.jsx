@@ -10,7 +10,7 @@ const TABodySchedule = ({day}) => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch('https://fcischedulewebsite.runasp.net/api/Admin/GetDropListsDetails'); // Replace with your actual API endpoint
+          const response = await fetch('http://fcischedulewebsite.runasp.net/api/Admin/GetDropListsDetails'); // Replace with your actual API endpoint
           const result = await response.json();
           setData(result);
           if (result.tAs) {
@@ -29,7 +29,7 @@ const TABodySchedule = ({day}) => {
   
     useEffect(() => {
       // Fetch data from the API
-      axios.get('https://fcischedulewebsite.runasp.net/api/Admin/GetAllClasses')
+      axios.get('http://fcischedulewebsite.runasp.net/api/Admin/GetAllClasses')
         .then(response => {
           setLabs(response.data);
           setLoading(false);

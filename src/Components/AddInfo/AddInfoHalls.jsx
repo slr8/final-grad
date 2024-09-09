@@ -55,7 +55,7 @@ const AddInfoHalls = ({ day, start, cancel, hallNumber }) => {
         };
 
         try {
-            const response = await fetch('https://fcischedulewebsite.runasp.net/api/Admin/addLecture', {
+            const response = await fetch('http://fcischedulewebsite.runasp.net/api/Admin/addLecture', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

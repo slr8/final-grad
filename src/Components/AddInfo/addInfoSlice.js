@@ -5,7 +5,7 @@ import axios from 'axios';
 export const fetchDropLists = createAsyncThunk(
   'dropLists/fetchDropLists',
   async () => {
-    const response = await axios.get('https://fcischedulewebsite.runasp.net/api/Admin/GetDropListsDetails');
+    const response = await axios.get('http://fcischedulewebsite.runasp.net/api/Admin/GetDropListsDetails');
     return response.data;
   }
 );

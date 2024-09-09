@@ -4,7 +4,7 @@ import React from 'react'
 const CRUDOnHoverClass = ({ id, show, onToggle}) => {
     const handleDelete = async () => {
         try {
-            const response = await axios.delete(`https://fcischedulewebsite.runasp.net/api/Admin/DeleteClass`, {
+            const response = await axios.delete(`http://fcischedulewebsite.runasp.net/api/Admin/DeleteClass`, {
                 data: { id: id }
             });
             console.log('Delete successful:', response.data);
