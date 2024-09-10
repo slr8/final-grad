@@ -24,7 +24,7 @@ const FirstColumnCellLabs = ({doc,show, place,onToggle, subject, section, group,
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        const response = await axios.put('http://fcischedulewebsite.runasp.net/api/Admin/Update-Class', formData, {
+        const response = await axios.put('https://fcischedulewebsite.runasp.net/api/Admin/Update-Class', formData, {
               headers: {
                   'Content-Type': 'application/json'
               }

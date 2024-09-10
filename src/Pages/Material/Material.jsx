@@ -11,7 +11,7 @@ const Material = () => {
     const [loading, setLoading] = useState(true);
   
     useEffect(() => {
-      axios.get('http://fcischedulewebsite.runasp.net/api/Student/StudentMaterial')
+      axios.get('https://fcischedulewebsite.runasp.net/api/Student/StudentMaterial')
         .then(response => {
           setData(response.data);
           setLoading(false);

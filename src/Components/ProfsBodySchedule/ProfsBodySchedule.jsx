@@ -9,7 +9,7 @@ const TeachingStaffBodySchedule = ({ day }) => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch('http://fcischedulewebsite.runasp.net/api/Admin/GetDropListsDetails'); // Replace with your actual API endpoint
+          const response = await fetch('https://fcischedulewebsite.runasp.net/api/Admin/GetDropListsDetails'); // Replace with your actual API endpoint
           const result = await response.json();
           setData(result);
           if (result.professors) {
@@ -28,7 +28,7 @@ const TeachingStaffBodySchedule = ({ day }) => {
 
   useEffect(() => {
     // Fetch data from the API
-    axios.get('http://fcischedulewebsite.runasp.net/api/Admin/GetAllLectures')
+    axios.get('https://fcischedulewebsite.runasp.net/api/Admin/GetAllLectures')
       .then(response => {
         setLectures(response.data);
         setLoading(false);

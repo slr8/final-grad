@@ -12,7 +12,7 @@ const TADetails = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://fcischedulewebsite.runasp.net/api/TeachingStaff/ViewTeachingAssistant');
+                const response = await axios.get('https://fcischedulewebsite.runasp.net/api/TeachingStaff/ViewTeachingAssistant');
                 setData(response.data);
             } catch (error) {
                 console.log(error);
